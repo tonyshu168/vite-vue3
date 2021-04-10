@@ -21,3 +21,67 @@ export default defineConfig({
 })
 ```
 使用方法: import HelloWorld from '@/components/HelloWorld.vue'
+
+### vue jsx的支持
+1. 安装@vitejs/plugin-vue-jsx: npm i @vitejs/plugin-vue-jsx --dev
+2. 在vite.config.js配置文件中添加vueJsx
+```js
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import path from 'path';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  alias: {
+    '@': path.resolve(__dirname, 'src')
+  },
+  plugins: [vue(), vueJsx()]
+})
+```
+3. 示例src/components/Comp.vue
+```js
+<script lang='jsx'>
+// jsx原始写法
+// export default {
+//   data() {
+//     return {
+//       counter: 0,
+//     }
+//   },
+//   methods: {
+//     increment() {
+//       this.counter++;
+//     }
+//   },
+//   render() {
+//     return (
+//       <div>
+//         <div>comp</div>
+//         <div onClick={this.increment}>{this.counter}</div>
+//       </div>
+//     )
+//   }
+// }
+
+// 别一种写法
+import { ref } from 'vue';
+export default {
+  setup() {
+    const counter = ref(0);
+    const increment = () => {
+      counter.value++;
+    }
+
+    return() => {
+      return (
+      <div>
+        <p>comp</p>
+        <p onClick={increment}>{counter.value}</p>
+      </div>
+      )
+    }
+  }
+}
+</script>
+```
