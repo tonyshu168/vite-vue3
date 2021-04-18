@@ -8,7 +8,7 @@
 
   <button @click="state.count++">count is: {{ state.count }}</button>
   <!-- <button @click="emit('output')">emit</button> -->
-  <button @click="output">emit</button>
+  <el-button @click="output">emit</el-button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.

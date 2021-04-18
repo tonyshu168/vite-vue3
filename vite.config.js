@@ -14,7 +14,9 @@ export default defineConfig({
     'apis': path.resolve(__dirname, 'src/apis'),
     'views': path.resolve(__dirname, 'src/views'),
     'utils': path.resolve(__dirname, 'src/uitls'),
-    'routes': path.resolve(__dirname, 'src/routes')
+    'routes': path.resolve(__dirname, 'src/routes'),
+    'styles': path.resolve(__dirname, 'src/styles'),
+    'plugins': path.resolve(__dirname, 'src/plugins')
   },
   plugins: [vue(), vueJsx(), viteMockServe({
     supportTs: false               // 对typescript的支持的开关

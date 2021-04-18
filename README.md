@@ -245,4 +245,123 @@ const state = reactive({ count: 0 })
 ```hs
 yarn add vue-router@next vuex@next 或 npm i vue-router@next vuex@next --save
 ```
+  2. 创建vue-router文件夹与文件,在src下面创建router目录, 在router目录下面创建index.js文件  
+  ```js
+  import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
+
+  // 工厂函数创建router实例
+  const router = createRouter({
+    history: createWebHashHistory(),          // hash模式， h5模式createWebHistory
+    // history: createWebHistory(),
+    routes: [
+      { path: '/', component: () => import('views/Home.vue') }
+    ]
+  })
+
+  export default router;
+  ```
+
+  3. 创建vuex文件夹与文件，在src下面新建store目录，在store目录中创建index.js文件
+  ```js
+  import { createStore } from 'vuex';
+
+  export default createStore({
+    state: {
+      counter: 0
+    },
+    mutations: {
+      increment(state) {
+        state.counter++;
+      }
+    },
+    actions: {}
+  })
+  ```
+
+  4. 在main.js中引用vue-router, vuex
+  ```js
+  import { createApp } from 'vue'
+  import App from './App.vue'
+  import router from './router';
+  import store from './store';
+
+  createApp(App)
+  .use(router)
+  .use(store)
+  .mount('#app')
+  ```
+
+  5. 在组件使用
+  ```js
+  $store.state.counter;
+  $store.commit('increment');
+  ```
+  
+
+  ### 样式的处理
+  1. 安装对应css的依赖包，我们这里以sass为例
+```
+yarn add sass -D
+```
+
+  2. 在src下面创建styles目录，在styles目录下创建对应的样式文件。
+  3. 在组件中引入样式
+```js
+import 'styles/index.scss';
+```
+
+  ### 引入Element3
+  1. 安装element3, yarn add element3
+  2. 全局引入element3, 需引入element3级对应的样式
+```js
+// 全局引入
+import element3 from 'element3';
+import 'element3/lib/theme-chalk/index.css';
+
+
+createApp(App)
+.use(router)
+.use(store)
+.use(element3)
+.mount('#app')
+```
+
+  2. 按需引入element3
+```js
+import { ElButton } from 'element3';
+import 'element3/lib/theme-chalk/button.css';
+
+createApp(App)
+.use(router)
+.use(store)
+.use(ElButton)
+.mount('#app')
+```
+
+  2. 使用插件方法按需引入，先在src下创建plugins目录，再在plugins目录下创建element3.js，还需在main.js引用
+```js
+// src/plugins/element3.js
+import { ElButton, ElInput } from 'element3';
+import 'element3/lib/theme-chalk/button.css';
+import 'element3/lib/theme-chalk/input.css';
+
+export default function(app) {
+  app.use(ElButton).use(ElInput);
+}
+```
+```js
+// main.js
+// 插件方法引入
+import element3 from 'plugins/element3';
+
+createApp(App)
+.use(router)
+.use(store)
+.use(element3)
+.mount('#app')
+```
+
+未完待续...  
+[项目地址](https://github.com/tonyshu168/vite-vue3)
+
 
