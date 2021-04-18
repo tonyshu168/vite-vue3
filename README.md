@@ -184,3 +184,65 @@ const state = reactive({ count: 0 })
   ```
 
   后面再添加mock数据，路由，状态管理，再加上组件库，最后再结合typescript.
+  [项目地址](https://github.com/tonyshu168/vite-vue3)
+
+  # 2021年vite-vue3项目实践(中) 接上
+
+  ### Mock插件应用
+  1. 插件的安装
+  ```hs
+  npm i vite-plugin-mock -D 或 yarn add vite-plugin-mocke -D
+  // 运行时依赖
+  yarn add mockjs
+  ```
+  2. mockjs的配置  
+    1. vite.config.js中的配置
+    ```js
+      // 引入plugin-mock
+      import { viteMockServe } from 'vite-plugin-mock';
+      // defineConfig配置中plugins添加viteMockServe
+      export default defineConfig({
+        plugins: [vue(), vueJsx(), viteMockServe({
+          supportTs: false               // 对typescript的支持的开关, 这个是重点, 要不然mockjs使用不了
+        })]
+      })
+    ```
+    2. 项目的根目录下创建mock目录, 并写上mock接口
+    ```js
+    export default [
+      {
+        url: '/api/getUsers',
+        method: 'get',
+        response: () => {
+          return {
+            code: 0,
+            message: 'ok',
+            data: ['Tony', 'Aric']
+          }
+        }
+      }
+    ]
+    ```
+    3. 在package.json中的"scripts"设置环境变量为development
+    ```json
+    // 如没安装cross-env需要安装一下cross-env
+    "scripts": {
+      "dev": "cross-env NODE_ENV=development vite",
+    }
+    ```
+    4. 在组件中调用
+    ```vue
+    <script setup>
+    // 请求mock api
+    fetch('/api/getUsers').then(res => {
+      console.log('response: ', res);
+    })
+    </script>
+    ```
+
+  ### vue-router4与vuex4的整合
+  1. 安装vue-router与vuex4
+```hs
+yarn add vue-router@next vuex@next 或 npm i vue-router@next vuex@next --save
+```
+

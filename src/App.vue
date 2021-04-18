@@ -14,7 +14,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <!-- 标记为jsx -->
 <script setup lang="jsx">
 import { defineComponent, ref } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+// import HelloWorld from './components/HelloWorld.vue'
 import Comp from './components/Comp.vue';
 import logo from "./assets/logo.png";
 const hw = ref(null);
@@ -30,8 +30,9 @@ export default defineComponent({
     return (
     <div>
       <img alt="Vue logo" src={logo} />
-      <HelloWorld msg="Hello Vue 3 + Vite" onOutput={this.output} ref={hw}/>
+      {/*<HelloWorld msg="Hello Vue 3 + Vite" onOutput={this.output} ref={hw}/> */}
       <Comp />
+      <router-view />
     </div>
     )
   },

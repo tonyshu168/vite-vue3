@@ -1,6 +1,6 @@
 <template>
   <h1>{{ msg }}</h1>
-
+  <p>{{$store.state.counter}}<button @click="$store.commit('increment')">increment</button></p>
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Documentation</a> |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
@@ -40,7 +40,13 @@ ctx.expose({
   }
 })
 
-const state = reactive({ count: 0 })
+const state = reactive({ count: 0 });
+
+// 请求mock api
+fetch('/api/getUsers').then(res => res.json())
+.then(data => {
+  console.log('data: ', data);
+})
 </script>
 
 <style scoped>
