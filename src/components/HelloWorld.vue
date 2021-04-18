@@ -7,17 +7,37 @@
   </p>
 
   <button @click="state.count++">count is: {{ state.count }}</button>
+  <!-- <button @click="emit('output')">emit</button> -->
+  <button @click="output">emit</button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
+    <Comp />
   </p>
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
-
+import Comp from './Comp.vue';
+import { defineProps, reactive, defineEmit, useContext } from 'vue';
+// 属性定义
 defineProps({
   msg: String
+})
+
+// 定义事件
+const emit = defineEmit(['output']);
+function output() {
+  // emit('output');
+  ctx.emit('output');
+}
+
+// 获取上下文
+const ctx = useContext();
+console.log('ctx: ', ctx);
+ctx.expose({
+  someMethod() {
+    console.log('do some thing from HelloWorld Component');
+  }
 })
 
 const state = reactive({ count: 0 })

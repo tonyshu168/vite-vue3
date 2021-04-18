@@ -12,18 +12,25 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 -->
 <!-- 标记为jsx -->
-<script lang="jsx">
-import { defineComponent } from "vue";
+<script setup lang="jsx">
+import { defineComponent, ref } from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import Comp from './components/Comp.vue';
-import logo from "./assets/logo.png"
+import logo from "./assets/logo.png";
+const hw = ref(null);
 
 export default defineComponent({
+  methods: {
+    output() {
+      console.log('output from helloworld component');
+      hw.value.someMethod();
+    },
+  },
   render() {
     return (
     <div>
       <img alt="Vue logo" src={logo} />
-      <HelloWorld msg="Hello Vue 3 + Vite" />
+      <HelloWorld msg="Hello Vue 3 + Vite" onOutput={this.output} ref={hw}/>
       <Comp />
     </div>
     )
