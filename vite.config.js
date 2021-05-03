@@ -13,9 +13,11 @@ export default defineConfig({
     'comps': path.resolve(__dirname, 'src/components'),
     'apis': path.resolve(__dirname, 'src/apis'),
     'views': path.resolve(__dirname, 'src/views'),
-    'utils': path.resolve(__dirname, 'src/uitls'),
+    'utils': path.resolve(__dirname, 'src/utils'),
     'routes': path.resolve(__dirname, 'src/routes'),
+    'router': path.resolve(__dirname, 'src/router'),
     'styles': path.resolve(__dirname, 'src/styles'),
+    'store': path.resolve(__dirname, 'src/store'),
     'plugins': path.resolve(__dirname, 'src/plugins')
   },
   plugins: [vue(), vueJsx(), viteMockServe({

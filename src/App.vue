@@ -29,9 +29,9 @@ export default defineComponent({
   render() {
     return (
     <div>
-      <img alt="Vue logo" src={logo} />
+      {/* <img alt="Vue logo" src={logo} /> */}
       {/*<HelloWorld msg="Hello Vue 3 + Vite" onOutput={this.output} ref={hw}/> */}
-      <Comp />
+      {/* <Comp /> */}
       <router-view />
     </div>
     )

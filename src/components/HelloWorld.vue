@@ -19,6 +19,16 @@
 <script setup>
 import Comp from './Comp.vue';
 import { defineProps, reactive, defineEmit, useContext } from 'vue';
+import request from 'utils/request';
+
+// try {
+//   const users = await request('/users');
+//   console.log('users: ', users);
+// }
+// catch( error ) {
+//   console.log('error', error);
+// }
+
 // 属性定义
 defineProps({
   msg: String
