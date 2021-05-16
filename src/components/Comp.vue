@@ -1,4 +1,4 @@
-<script lang='jsx'>
+<script lang='tsx'>
 // jsx原始写法
 // export default {
 //   data() {

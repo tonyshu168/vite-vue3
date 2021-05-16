@@ -16,8 +16,9 @@
   </p>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Comp from './Comp.vue';
+// import ClassComponent from './ClassComponent.vue';
 import { defineProps, reactive, defineEmit, useContext } from 'vue';
 import request from 'utils/request';
 
