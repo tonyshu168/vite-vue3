@@ -15,40 +15,43 @@
 </template>
 
 <script>
+import props from './Pagination.ts';
+console.log('** Props **'); console.log( props );
 export default {
   name: "Pagination",
-  props: {
-    total: {
-      required: true,
-      type: Number,
-    },
-    page: {
-      type: Number,
-      default: 1,
-    },
-    limit: {
-      type: Number,
-      default: 20,
-    },
-    pageSizes: {
-      type: Array,
-      default() {
-        return [10, 20, 30, 50];
-      },
-    },
-    layout: {
-      type: String,
-      default: "total, sizes, prev, pager, next, jumper",
-    },
-    background: {
-      type: Boolean,
-      default: true,
-    },
-    hidden: {
-      type: Boolean,
-      default: false,
-    },
-  },
+  // props: {
+  //   total: {
+  //     required: true,
+  //     type: Number,
+  //   },
+  //   page: {
+  //     type: Number,
+  //     default: 1,
+  //   },
+  //   limit: {
+  //     type: Number,
+  //     default: 20,
+  //   },
+  //   pageSizes: {
+  //     type: Array,
+  //     default() {
+  //       return [10, 20, 30, 50];
+  //     },
+  //   },
+  //   layout: {
+  //     type: String,
+  //     default: "total, sizes, prev, pager, next, jumper",
+  //   },
+  //   background: {
+  //     type: Boolean,
+  //     default: true,
+  //   },
+  //   hidden: {
+  //     type: Boolean,
+  //     default: false,
+  //   },
+  // },
+  props,
   emits: ["update:page", "update:limit", "pagination"],
   computed: {
     currentPage: {
@@ -67,6 +70,9 @@ export default {
         this.$emit("update:limit", val);
       },
     },
+  },
+  beforeCreate() {
+    console.log('** beforeCreate **', this)
   },
   methods: {
     handleSizeChange(val) {
