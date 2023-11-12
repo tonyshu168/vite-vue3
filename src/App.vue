@@ -12,7 +12,7 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 -->
 <!-- 标记为jsx -->
-<script setup lang="jsx">
+<script lang="jsx">
 import { defineComponent, ref } from "vue";
 // import HelloWorld from './components/HelloWorld.vue'
 import Comp from './components/Comp.vue';

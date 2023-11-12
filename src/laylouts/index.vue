@@ -1,5 +1,5 @@
-<script setup lang="jsx">
-import { defineProps, reactive, defineEmit, useContext } from 'vue';
+<script lang="jsx">
+import { defineProps, reactive } from 'vue';
 import NavBar from './components/Navbar.vue';
 import AppMain from './components/AppMain.vue';
 import Sidebar from "./components/Sidebar/index.vue";

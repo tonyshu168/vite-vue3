@@ -1,4 +1,4 @@
-<script setup lang="jsx">
+<script lang="jsx">
 import Breadcrumb from './Breadcrumb.vue';
 
 export default {

@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import Comp from './Comp.vue';
 // import ClassComponent from './ClassComponent.vue';
-import { defineProps, reactive, defineEmit, useContext } from 'vue';
+import { defineProps, reactive, defineEmits, defineExpose } from 'vue';
 import request from 'utils/request';
 
 // try {
@@ -36,16 +36,13 @@ defineProps({
 })
 
 // 定义事件
-const emit = defineEmit(['output']);
+const emit = defineEmits(['output']);
 function output() {
   // emit('output');
-  ctx.emit('output');
+  emit('output');
 }
 
-// 获取上下文
-const ctx = useContext();
-console.log('ctx: ', ctx);
-ctx.expose({
+defineExpose({
   someMethod() {
     console.log('do some thing from HelloWorld Component');
   }
